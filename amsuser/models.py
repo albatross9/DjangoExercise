@@ -11,5 +11,8 @@ class Amsuser(models.Model):
     registered_dttm = models.DateTimeField(
         auto_now_add=True, verbose_name='등록시간')
 
+    def __str__(self):
+        return self.username
+
     class Meta:
         db_table = 'Albatross9_AMSuser'

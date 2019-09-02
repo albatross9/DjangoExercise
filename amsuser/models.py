@@ -16,3 +16,5 @@ class Amsuser(models.Model):
 
     class Meta:
         db_table = 'Albatross9_AMSuser'
+        verbose_name = 'ams 사용자'
+        verbose_name_plural = '사용자'

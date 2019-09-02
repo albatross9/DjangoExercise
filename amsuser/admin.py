@@ -5,7 +5,7 @@ from .models import Amsuser
 
 
 class AmsAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('username', 'password')
 
 
 admin.site.register(Amsuser, AmsAdmin)

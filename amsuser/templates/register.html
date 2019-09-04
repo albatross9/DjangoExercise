@@ -36,38 +36,36 @@
         <div class="col-12">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="username">사용자 이름</label>
               <input
-                type="email"
+                type="text"
                 class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
+                id="username"
+                placeholder="사용자이름을 입려하세요"
               />
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
-              >
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label for="password">비번</label>
               <input
                 type="password"
                 class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
+                id="password"
+                placeholder="비밀번호"
               />
-            </div>
-            <div class="form-group form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-              />
-              <label class="form-check-label" for="exampleCheck1"
-                >Check me out</label
+              <small id="passwordHelp" class="form-text text-muted"
+                >비번은 8자 이상으로 해줏메</small
               >
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+              <label for="re-password">비번 확인</label>
+              <input
+                type="password"
+                class="form-control"
+                id="re-password"
+                placeholder="비밀번호 확인"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">등록</button>
           </form>
         </div>
       </div>

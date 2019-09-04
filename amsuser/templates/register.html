@@ -34,7 +34,9 @@
 
       <div class="row mt-5">
         <div class="col-12">
-          <form>
+          <form method="POST" action=".">
+            {% csrf_token %}
+            <!-- 장고에서 폼을 받아오는 일종의 암호화  -->
             <div class="form-group">
               <label for="username">사용자 이름</label>
               <input
@@ -42,6 +44,7 @@
                 class="form-control"
                 id="username"
                 placeholder="사용자이름을 입려하세요"
+                name="username"
               />
             </div>
             <div class="form-group">
@@ -51,6 +54,7 @@
                 class="form-control"
                 id="password"
                 placeholder="비밀번호"
+                name="password"
               />
               <small id="passwordHelp" class="form-text text-muted"
                 >비번은 8자 이상으로 해줏메</small
@@ -63,6 +67,7 @@
                 class="form-control"
                 id="re-password"
                 placeholder="비밀번호 확인"
+                name="re-password"
               />
             </div>
             <button type="submit" class="btn btn-primary">등록</button>

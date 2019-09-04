@@ -18,4 +18,5 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('amsuser/', include('amsuser.urls'))  # ams아래의 모든것을은 ams url이 관리하게해줌
 ]

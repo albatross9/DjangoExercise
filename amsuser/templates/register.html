@@ -34,6 +34,9 @@
 
       <div class="row mt-5">
         <div class="col-12">
+          {{ error }}
+        </div>
+        <div class="col-12">
           <form method="POST" action=".">
             {% csrf_token %}
             <!-- 장고에서 폼을 받아오는 일종의 암호화  -->

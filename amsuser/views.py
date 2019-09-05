@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from Django.contirb.auth.hashers import make_password
 from .models import Amsuser
 
 # Create your views here.
@@ -21,7 +22,7 @@ def register(request):
         else:
             amsuser = Amsuser(
                 username=username,
-                password=password
+                password=make_password(password)
             )
 
             amsuser.save()

@@ -4,10 +4,28 @@ from django.shortcuts import render
 from Django.contirb.auth.hashers import make_password
 =======
 from django.contrib.auth.hashers import make_password
+<<<<<<< HEAD
 >>>>>>> 회원가입창에 모든란에 항목을 안적었을떄 오류나오게
+=======
+
+>>>>>>> 로그인 세션 html, 뷰, urls 추가
 from .models import Amsuser
 
 # Create your views here.
+
+
+def login(requset):
+    if request.method == 'GET':
+        return render(requset, 'login.html')
+    elif request.method == 'POST':
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+        res_data = {}
+        if not (username and password):
+            res_data['error'] = '모든값을 입력!!'
+        else:
+            amsuser = Amsuser.objects.get(username=username)
+            amsuser
 
 
 def register(request):

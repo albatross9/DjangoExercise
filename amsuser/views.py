@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 <<<<<<< HEAD
+<<<<<<< HEAD
 from Django.contirb.auth.hashers import make_password
 =======
 from django.contrib.auth.hashers import make_password
@@ -9,23 +10,33 @@ from django.contrib.auth.hashers import make_password
 =======
 
 >>>>>>> 로그인 세션 html, 뷰, urls 추가
+=======
+from django.contrib.auth.hashers import make_password, check_password
+>>>>>>> 비번일치하지않을때
 from .models import Amsuser
 
 # Create your views here.
 
 
-def login(requset):
+def login(request):
     if request.method == 'GET':
-        return render(requset, 'login.html')
+        return render(request, 'login.html')
+
     elif request.method == 'POST':
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
+
         res_data = {}
         if not (username and password):
             res_data['error'] = '모든값을 입력!!'
         else:
-            amsuser = Amsuser.objects.get(username=username)
-            amsuser
+            amsusers = Amsuser.objects.get(username=username)
+            if check_password(password, amsusers.password):
+                pass
+            else:
+                res_data['error'] = '비번이 틀립니다!!!!!'
+
+        return render(request, 'login.html', res_data)
 
 
 def register(request):

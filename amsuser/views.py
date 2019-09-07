@@ -1,20 +1,8 @@
+from .models import Amsuser
+from Django.contirb.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponse
 from django.shortcuts import render
-<<<<<<< HEAD
-<<<<<<< HEAD
-from Django.contirb.auth.hashers import make_password
-=======
-from django.contrib.auth.hashers import make_password
-<<<<<<< HEAD
->>>>>>> 회원가입창에 모든란에 항목을 안적었을떄 오류나오게
-=======
-
->>>>>>> 로그인 세션 html, 뷰, urls 추가
-=======
-from django.contrib.auth.hashers import make_password, check_password
->>>>>>> 비번일치하지않을때
-from .models import Amsuser
-
 # Create your views here.
 
 
@@ -57,12 +45,7 @@ def register(request):
         else:
             amsuser = Amsuser(
                 username=username,
-<<<<<<< HEAD
                 password=make_password(password)
-=======
-                useremail=useremail,
-                password=password
->>>>>>> 이메일필드 추가
             )
 
             amsuser.save()

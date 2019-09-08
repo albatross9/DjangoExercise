@@ -15,7 +15,13 @@
       <form method="POST" action=".">
         {% csrf_token %}
         <!-- 장고에서 폼을 받아오는 일종의 암호화  -->
-        {{form.as_p}}
+        {% for field in form %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          <input type="{{ field.field.widget.input_type }}" class="form=control" 
+            id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name=" field.name"/>
+        </div>
+        {% endfor %}
         <button type="submit" class="btn btn-primary">로그인</button>
       </form>
     </div>

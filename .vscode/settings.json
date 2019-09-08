@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
     "python.pythonPath": "C:\\Users\\Z\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe"
-=======
-    "python.pythonPath": "C:\\Users\\Alphonse\\envs\\DJango\\Scripts\\python.exe"
->>>>>>> e015c4c682482fd1b4bc1c8d71f4f7c76c80f321
+    "python.pythonPath": "C:\\Django\\Scripts\\python.exe"
 }

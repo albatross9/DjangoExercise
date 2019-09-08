@@ -2,6 +2,8 @@ from .models import Amsuser
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from .forms import LoginForm
+
 
 def home(request):
     user_id = request.session.get('user')
@@ -12,6 +14,7 @@ def home(request):
 
     return HttpResponse('home!')
 
+
 def logout(request):
     if request.session.get('user'):
         del(request.session['user'])
@@ -20,25 +23,9 @@ def logout(request):
 
 
 def login(request):
-    if request.method == 'GET':
-        return render(request, 'login.html')
+    form = LoginForm()
 
-    elif request.method == 'POST':
-        username = request.POST.get('username', None)
-        password = request.POST.get('password', None)
-
-        res_data = {}
-        if not (username and password):
-            res_data['error'] = '모든값을 입력!!'
-        else:
-            amsuser = Amsuser.objects.get(username=username)
-            if check_password(password, amsuser.password):
-                request.session['user']=amsuser.id
-                return redirect('/')
-            else:
-                res_data['error'] = '비번이 틀립니다!!!!!'
-
-        return render(request, 'login.html', res_data)
+    return render(request, 'login.html', {'form': form})
 
 
 def register(request):

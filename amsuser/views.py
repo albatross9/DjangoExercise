@@ -1,5 +1,4 @@
 from .models import Amsuser
-from Django.contirb.auth.hashers import make_password
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponse
 from django.shortcuts import render

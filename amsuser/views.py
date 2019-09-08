@@ -1,8 +1,16 @@
 from .models import Amsuser
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponse
-from django.shortcuts import render
-# Create your views hㅎere.
+from django.shortcuts import render, redirect
+
+def home(request):
+    user_id = request.session.get('user')
+
+    if user_id:
+        amsuser = Amsuser.objects.get(pk=user_id)
+        return HttpResponse(amsuser.username)
+
+    return HttpResponse('home!')
 
 
 def login(request):
@@ -17,9 +25,10 @@ def login(request):
         if not (username and password):
             res_data['error'] = '모든값을 입력!!'
         else:
-            amsusers = Amsuser.objects.get(username=username)
-            if check_password(password, amsusers.password):
-                pass
+            amsuser = Amsuser.objects.get(username=username)
+            if check_password(password, amsuser.password):
+                request.session['user']=amsuser.id
+                return redirect('/')
             else:
                 res_data['error'] = '비번이 틀립니다!!!!!'
 

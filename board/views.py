@@ -5,5 +5,5 @@ from .models import Board
 
 
 def board_list(request):
-    board = Board.objects.all().order_by('-id')
+    boards = Board.objects.all().order_by('-id')
     return render(request, 'board_list.html', {'boards': boards})

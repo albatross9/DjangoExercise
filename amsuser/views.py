@@ -2,7 +2,7 @@ from .models import Amsuser
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import LoginForm
+from .forms import LoginForm, loginview
 
 
 def home(request):

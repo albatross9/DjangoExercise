@@ -23,15 +23,35 @@ def logout(request):
 
 
 def login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            request.session['user'] = form.user_id
-            return redirect('/')
-    else:
-        form = LoginForm()
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    elif request.method == 'POST':
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
 
-    return render(request, 'login.html', {'form': form})
+        res_data = {}
+        if not (username and password):
+            res_data['error'] = '모든 값을 입력해주세요'
+        else:
+            amsuser = Amsuser.objects.get(username=username)
+            if check_password(password, amsuser.password):
+                request.session['user'] = amsuser.id
+                return redirect('/')
+
+            else:
+                res_data['error'] = '비번이 틀렸습니다!'
+        return render(request, 'login.html', res_data)
+
+# def login(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             request.session['user'] = form.user_id
+#             return redirect('/')
+#     else:
+#         form = LoginForm()
+
+#     return render(request, 'login.html', {'form': form})
 
 
 def register(request):

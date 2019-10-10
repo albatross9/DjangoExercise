@@ -3,15 +3,19 @@ from .models import Amsuser
 from django.contrib.auth.hashers import check_password
 
 
+class LoginFormRe(forms.Form):
+    username = forms.CharField(max_length=64, label="사용자 이름")
+    password = forms.CharField()
+    subject = forms.CharField(max_length=100, label="서어엉어브젝트")
+    message = forms.CharField()
+    sender = forms.EmailField()
+    cc_myself = forms.BooleanField(required=False)
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(
-        error_messages={
-            'required': '아이디를 입력해주세요.'
-        }, max_length=64, label="사용자 이름")
+        max_length=64, label="사용자 이름")
     password = forms.CharField(
-        error_messages={
-            'required': '비번을 입력해주세요'
-        },
         widget=forms.PasswordInput, label="비밀번호")
 
     def clean(self):

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <h1>로그인</h1>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      {{ error }}
+    </div>
+    <div class="col-12">
+      <form method="POST" action=".">
+        {% csrf_token %}
+          {% for field in form %}
+              <div class="fieldWrapper">
+                  {{ field.errors }}
+                  {{ field.label_tag }}{{ field }}
+              </div>
+          {% endfor %}
+          {% for field in form %}
+              <div class="fieldWrapper">
+                  {{ field.errors }}
+                  {{ field.label }}{{ field }}
+              </div>
+          {% endfor %}
+          {% for field in form %}
+              <div class="fieldWrapper">
+                  {{ field.errors }}
+                  {{ field.value }}{{ field }}
+              </div>
+          {% endfor %}
+          {% for field in form %}
+              <div class="fieldWrapper">
+                  {{ field.errors }}
+                  {{ field.html_name }}{{ field }}
+              </div>
+          {% endfor %}
+
+
+
+        <p><input type="submit" value="Send message" /></p>
+        </form>
+{% endblock contents %}
